@@ -10,10 +10,10 @@ export const routePaths = {
   BookmarkPage: "/bookmark",
   Delete: "/delete",
 
-  OAuth_: "/oauth/",
-  OAuth_Kakao: "kakao",
-  OAuth_Naver: "naver",
-  OAuth_Success: "success",
+  // OAuth_: "/oauth/",
+  OAuth_Kakao: "/oauth/kakao",
+  OAuth_Naver: "/oauth/naver",
+  OAuth_Success: "/oauth/success",
 
   Join_: "/join/",
   Join_Agree: "agree",
