@@ -12,10 +12,9 @@ export default function SocialLoginBtn(props: ButtonContents) {
   const { theme, btnText, authUrl } = props;
 
   const logoTheme = theme === "KAKAO" ? <IcKakaoLogo /> : <IcNaverLogo />;
-  const LoginClickHandler = () => window.location.assign(authUrl);
 
   return (
-    <St.Container linktype={theme} onClick={LoginClickHandler}>
+    <St.Container linktype={theme} href={authUrl}>
       <St.Logo>{logoTheme}</St.Logo>
       <St.Text texttype={theme}>{btnText}</St.Text>
     </St.Container>

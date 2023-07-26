@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.button<{ linktype: "KAKAO" | "NAVER" }>`
+export const Container = styled.a<{ linktype: "KAKAO" | "NAVER" }>`
   width: 100%;
   height: 5rem;
 

@@ -1,11 +1,5 @@
 {
-  "rewrites": [
-    {
-      "source": "/js/:path*",
-      "destination": "/js/:path*",
-      "headers": {
-        "content-type": "text/javascript"
-      }
-    }
+  "rewrites":  [
+    {"source": "/(.*)", "destination": "/"}
   ]
 }
