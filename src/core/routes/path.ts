@@ -11,9 +11,9 @@ export const routePaths = {
   Delete: "/delete",
 
   OAuth_: "/oauth/",
-  OAuth_Kakao: "/oauth/kakao",
-  OAuth_Naver: "/oauth/naver",
-  OAuth_Success: "/oauth/success",
+  OAuth_Kakao: "/kakao",
+  OAuth_Naver: "/naver",
+  OAuth_Success: "/success",
 
   Join_: "/join/",
   Join_Agree: "agree",
