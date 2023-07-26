@@ -13,7 +13,7 @@ export default function OAuthKakaoPage() {
 
   const { login } = useAuth();
   const loginWithUserToken = (accessToken: string) => {
-    console.log("loginWithUserToken()입니다!");
+    alert("loginWithUserToken()입니다!");
 
     login(accessToken);
     navigate(routePaths.Main);
@@ -35,25 +35,25 @@ export default function OAuthKakaoPage() {
       },
     );
 
-    console.log("kakao access token", response.data.access_token);
+    alert("kakao access token" + response.data.access_token);
     return response.data.access_token;
   };
 
   const handlePostKakaoLogin = async (accessToken: string) => {
     const data = await loginApi.postSocialLogin("kakao", accessToken, "", "");
-    console.log("post login", data);
-    console.log("post login", data.data.newMember);
+    alert("post login" + data);
+    alert("post login" + data.data.newMember);
 
     data.data.newMember
       ? navigate(`${routePaths.Join_}${routePaths.Join_Agree}`, { state: { socialLoginToken: data.data.accessToken } })
       : loginWithUserToken(data.data.accessToken);
-    console.log("navigate 혹은 login 요청 보냄");
+    alert("navigate 혹은 login 요청 보냄");
   };
 
   useEffect(() => {
     const authorizationCode = new URL(window.location.href).searchParams.get("code");
     if (!authorizationCode) return alert("다시 시도해주세요");
-    console.log("kakao code", authorizationCode);
+    alert("kakao code" + authorizationCode);
     (async () => {
       const token = await getKakaoToken(authorizationCode);
       handlePostKakaoLogin(token);

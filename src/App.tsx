@@ -14,11 +14,6 @@ export default function App() {
     setScreenSize();
   }, []);
 
-  if (process.env.NODE_ENV === "production") {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    console.log = function () {};
-  }
-
   return (
     <St.MobileContainer>
       <Router />
