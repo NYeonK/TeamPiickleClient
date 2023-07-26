@@ -10,5 +10,5 @@
       ]
     }
   ],
-  "rewrites": [{ "source": "/(?!oauth)(.*)", "destination": "/index.html" }]
+  "rewrites": [{ "source": "/((?!oauth).*)", "destination": "/index.html" }]
 }
