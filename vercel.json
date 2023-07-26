@@ -1,5 +1,16 @@
 {
-  "rewrites":  [
-    {"source": "/(.*)", "destination": "/"}
+  "rewrites": [
+    {
+      "source": "/oauth/kakao",
+      "destination": "/oauth/kakao"
+    },
+    {
+      "source": "/oauth/naver",
+      "destination": "/oauth/naver"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
   ]
 }
