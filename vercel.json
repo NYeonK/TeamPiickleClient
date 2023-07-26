@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/_assets/:file(.+\\.js)",
+      "source": "/(.*).js",
       "headers": [
         {
           "key": "Content-Type",
@@ -10,5 +10,5 @@
       ]
     }
   ],
-  "rewrites": [{ "source": "/:path(?!_assets)(.*)", "destination": "/index.html" }]
+  "rewrites": [{ "source": "/(?!.*\\.js)(.*)", "destination": "/index.html" }]
 }
