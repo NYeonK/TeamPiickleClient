@@ -1,14 +1,5 @@
 {
-  "headers": [
-    {
-      "source": "/(.*).js",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        }
-      ]
-    }
-  ],
-  "rewrites": [{ "source": "/((?!oauth).*)", "destination": "/index.html" }]
+  "rewrites":  [
+    {"source": "/(.*)", "destination": "/"}
+  ]
 }
