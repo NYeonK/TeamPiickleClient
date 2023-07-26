@@ -19,11 +19,6 @@ export default function OAuthKakaoPage() {
     navigate(routePaths.Main);
   };
 
-  if (process.env.NODE_ENV === "production") {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    console.log = function () {};
-  }
-
   const getKakaoToken = async (authorizationCode: string) => {
     const response = await axios.post(
       "https://kauth.kakao.com/oauth/token",
