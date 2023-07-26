@@ -29,7 +29,7 @@ export default function AgreePage() {
   const { login } = useAuth();
   const loginWithUserToken = (accessToken: string) => {
     login(accessToken);
-    navigate(`${routePaths.OAuth_Success}`);
+    navigate(`${routePaths.OAuth_}${routePaths.OAuth_Success}`);
   };
 
   const outClickCloserRef = useOutClickCloser(() => {
