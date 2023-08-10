@@ -20,24 +20,27 @@ export default function OAuthKakaoPage() {
   };
 
   const getKakaoToken = async (authorizationCode: string) => {
-    const body = {
-      grant_type: "authorization_code",
-      client_id: import.meta.env.VITE_KAKAO_CLIENT_ID,
-      redirect_uri: import.meta.env.DEV ? "http://127.0.0.1:5173/oauth/kakao" : import.meta.env.VITE_KAKAO_REDIRECT_URI,
-      code: authorizationCode,
-    };
+    try {
+      const response = await axios.post(
+        "https://kauth.kakao.com/oauth/token",
+        qs.stringify({
+          grant_type: "authorization_code",
+          client_id: import.meta.env.VITE_KAKAO_CLIENT_ID,
+          redirect_uri: import.meta.env.DEV
+            ? "http://127.0.0.1:5173/oauth/kakao"
+            : import.meta.env.VITE_KAKAO_REDIRECT_URI,
+          code: authorizationCode,
+        }),
+        {
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        },
+      );
 
-    const response = await axios({
-      method: "POST",
-      url: "https://kauth.kakao.com/oauth/token",
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-      },
-      data: qs.stringify(body),
-    });
-
-    alert("kakao access token" + response.data.access_token);
-    return response.data.access_token;
+      alert("kakao access token" + response.data.access_token);
+      return response.data.access_token;
+    } catch (e) {
+      return e;
+    }
   };
 
   const handlePostKakaoLogin = async (accessToken: string) => {
