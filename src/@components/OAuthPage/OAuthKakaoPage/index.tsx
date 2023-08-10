@@ -33,7 +33,7 @@ export default function OAuthKakaoPage() {
           client_secret: import.meta.env.VITE_KAKAO_CLIENT_SECRET,
         }),
         {
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          headers: { "Content-type": "application/x-www-form-urlencoded;charset=utf-8" },
         },
       );
       return response.data.access_token;
