@@ -30,13 +30,12 @@ export default function OAuthKakaoPage() {
             ? "http://127.0.0.1:5173/oauth/kakao"
             : import.meta.env.VITE_KAKAO_REDIRECT_URI,
           code: authorizationCode,
+          client_secret: import.meta.env.VITE_KAKAO_CLIENT_SECRET,
         }),
         {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
         },
       );
-
-      alert("kakao access token" + response.data.access_token);
       return response.data.access_token;
     } catch (e) {
       return e;
