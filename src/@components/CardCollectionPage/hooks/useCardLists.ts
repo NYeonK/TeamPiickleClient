@@ -21,7 +21,7 @@ export function useCardLists() {
   const fetchingKeyByLocation = getSWRFetchingKeyByLocation(cardsTypeLocation);
   const optionsByLocation = getSWROptionsByLocation(cardsTypeLocation);
 
-  const { data } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
+  const { data, mutate: mutateCardlists } = useSWR<PiickleSWRResponse<ExtendedCardList>>(
     fetchingKeyByLocation,
     realReq.GET_SWR,
     optionsByLocation,
@@ -32,6 +32,7 @@ export function useCardLists() {
   return {
     cardLists: getReturnCardLists(data, cardsTypeLocation) ?? [],
     fetchCardListsWithFilter,
+    mutateCardlists,
   };
 }
 
@@ -45,6 +46,8 @@ function getReturnCardLists(
     case LocationType.MEDLEY:
       return data?.data.data.cards;
     case LocationType.RECENT:
+      return data?.data.data.cardResponseDtos;
+    case LocationType.UPDATE:
       return data?.data.data.cardResponseDtos;
     default:
       return data?.data.data;
@@ -91,12 +94,17 @@ function getSWRFetchingKeyByLocation(cardsTypeLocation: CardsTypeLocation) {
     case LocationType.FILTER: {
       return `${PATH.CATEGORIES_}${PATH.CATEGORIES_CARDS}?${cardsTypeLocation.filterTypes}`;
     }
+
+    case LocationType.UPDATE:
+      return `${PATH.CARDS_}${PATH.CARDS_UPDATE}`;
     case LocationType.RECENT:
       return `${PATH.CARDS_}${PATH.CARDS_RECENT}`;
     case LocationType.FEMALE:
       return `${PATH.CARDS_}${PATH.CARDS_GENDER}/여`;
     case LocationType.MALE:
       return `${PATH.CARDS_}${PATH.CARDS_GENDER}/남`;
+    case LocationType.SHARE:
+      return `${PATH.CARDS_}/${cardsTypeLocation.cardId}`;
 
     case LocationType.ALL:
     default: {
