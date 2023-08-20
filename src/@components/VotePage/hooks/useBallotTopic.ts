@@ -7,13 +7,9 @@ import { BallotTopicData } from "../../../types/ballots";
 import { PiickleSWRResponse } from "../../../types/remote/swr";
 
 export default function useBallotTopic(ballotId: string) {
-  const { data } = useSWR<PiickleSWRResponse<BallotTopicData>>(
-    `${PATH.BALLOTS}/${ballotId}`,
-    (url) => realReq.GET_SWR(url, { withCredentials: true }),
-    {
-      suspense: true,
-    },
-  );
+  const { data } = useSWR<PiickleSWRResponse<BallotTopicData>>(`${PATH.BALLOTS}/${ballotId}`, realReq.GET_SWR, {
+    suspense: true,
+  });
   const { mutate } = useSWRConfig();
 
   const [isBeforeVotingState, setIsBeforeVotingState] = useState(true);
