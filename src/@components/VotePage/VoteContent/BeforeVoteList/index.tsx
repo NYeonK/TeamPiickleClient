@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { IcCheckWithNoBg } from "../../../../asset/icon";
 import { voteApi } from "../../../../core/api/vote";
-import useAuth from "../../../../core/hooks/useAuth";
+//import useAuth from "../../../../core/hooks/useAuth";
 import { BallotTopicData } from "../../../../types/ballots";
 import { GTM_CLASS_NAME } from "../../../../util/const/gtm";
 import useModal from "../../../@common/hooks/useModal";
@@ -15,7 +15,7 @@ interface BeforeVoteListProps {
 }
 
 export default function BeforeVoteList(props: BeforeVoteListProps) {
-  const { isLogin } = useAuth();
+  //const { isLogin } = useAuth();
   const { ballotTopic, mutateBallotState } = props;
 
   const { isModalOpen: isLoginModalOpen, toggleModal: toggleLoginModal } = useModal();
@@ -30,10 +30,10 @@ export default function BeforeVoteList(props: BeforeVoteListProps) {
   };
 
   const handleClickVote = () => {
-    if (!isLogin) {
-      toggleLoginModal();
-      return;
-    }
+    // if (!isLogin) {
+    //   toggleLoginModal();
+    //   return;
+    // }
 
     if (currentIdx !== "") {
       handlePost();
