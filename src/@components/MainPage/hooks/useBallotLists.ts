@@ -9,7 +9,6 @@ export function useBallotLists(shoudOnSuspense = false) {
   const swrSetting = shoudOnSuspense ? { suspense: true } : { suspense: false };
   const { data } = useSWR<PiickleSWRResponse<BallotList[]>>(
     `${PATH.BALLOTS}`,
-    //realReq.GET_SWR,
     (url) => realReq.GET_SWR(url, { withCredentials: true }),
     swrSetting,
   );

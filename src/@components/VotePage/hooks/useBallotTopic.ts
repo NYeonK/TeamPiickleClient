@@ -9,7 +9,6 @@ import { PiickleSWRResponse } from "../../../types/remote/swr";
 export default function useBallotTopic(ballotId: string) {
   const { data } = useSWR<PiickleSWRResponse<BallotTopicData>>(
     `${PATH.BALLOTS}/${ballotId}`,
-    //realReq.GET_SWR,
     (url) => realReq.GET_SWR(url, { withCredentials: true }),
     {
       suspense: true,
